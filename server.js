@@ -1,10 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const companies = require('./routes/companies');
+const morgan = require('morgan');
 
 dotenv.config({ path: './config/.env' });
 
 const app = express();
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
 
 app.use('/api/v1/companies', companies);
 
