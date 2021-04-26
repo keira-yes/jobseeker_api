@@ -4,7 +4,8 @@
   "description": "JobSeeker backend API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set NODE_ENV=production& node server",
+    "dev": "nodemon server"
   },
   "author": "Irina Kirillova",
   "license": "MIT",
