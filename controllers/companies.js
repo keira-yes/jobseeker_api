@@ -32,7 +32,8 @@ exports.getCompany = async (req, res, next) => {
             data: company
         })
     } catch (err) {
-        res.status(400).json({ success: false });
+        // res.status(400).json({ success: false });
+        next(err);
     }
 }
 

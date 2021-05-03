@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const colors = require('colors');
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 const companies = require('./routes/companies');
 
@@ -22,6 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Routes
 app.use('/api/v1/companies', companies);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 const {NODE_ENV} = process.env;
