@@ -14,7 +14,7 @@ const CompanySchema = new mongoose.Schema({
         required: [true, 'Please add a company description'],
         unique: true,
         trim: true,
-        maxlength: [1000, 'No more than 1000 characters']
+        maxlength: [2000, 'No more than 2000 characters']
     },
     website: {
         type: String,
@@ -37,11 +37,11 @@ const CompanySchema = new mongoose.Schema({
         type: {
             type: String,
             enum: ['Point'],
-            required: true
+            // required: true
         },
         coordinates: {
             type: [Number],
-            required: true,
+            // required: true,
             index: '2dsphere'
         },
         formattedAddress: String,
@@ -53,16 +53,7 @@ const CompanySchema = new mongoose.Schema({
     },
     careers: {
        type: [String],
-        required: true,
-        enum: [
-            'Web development',
-            'Mobile development',
-            'Ruby on Rails',
-            'Fintech development',
-            'AI',
-            'Machine learning',
-            'Other'
-        ]
+        required: true
     },
     averageRating: {
         type: Number,

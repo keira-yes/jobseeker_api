@@ -12,6 +12,9 @@ connectDB();
 
 const app = express();
 
+// Body parser
+app.use(express.json());
+
 // Add logger to requests
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
