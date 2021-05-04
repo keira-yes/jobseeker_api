@@ -34,6 +34,7 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add an address']
     },
+    // Mongoose GeoJSON
     location: {
         type: {
             type: String,

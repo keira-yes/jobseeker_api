@@ -1,5 +1,6 @@
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
+const geocoder = require('../utils/geocoder');
 const Company = require('../models/Company');
 
 // @desc    Get all companies
@@ -10,7 +11,33 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, results: companies.length, data: companies });
 });
 
-// @desc    Get company
+// @desc    Get companies within a radius by zipcode and distance
+// @route   DELETE /api/v1/companies/radius/:zipcode/:distance
+// @access  Public
+exports.getCompaniesWithinRadius = asyncHandler(async (req, res, next) => {
+    const { zipcode, distance } = req.params;
+
+    // Get location from geocoder
+    const location = await geocoder.geocode(zipcode);
+    const lat = location[0].latitude;
+    const lng = location[0].longitude;
+
+    // Get radius by Earth radius (6378 km)
+    const radius = distance / 6378;
+
+    // Get companies by mongoose GeoJSON
+    const companies = await Company.find({
+        location: { $geoWithin: { $centerSphere: [ [lng, lat], radius ] } }
+    });
+
+    res.status(200).json({
+        success: true,
+        results: companies.length,
+        data: companies
+    });
+});
+
+// @desc    Get company by id
 // @route   GET /api/v1/companies/:id
 // @access  Public
 exports.getCompany = asyncHandler(async (req, res, next) => {
