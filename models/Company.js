@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const geocoder = require('../utils/geocoder');
 
 const CompanySchema = new mongoose.Schema({
    name: {
@@ -34,15 +35,12 @@ const CompanySchema = new mongoose.Schema({
         required: [true, 'Please add an address']
     },
     location: {
-        // Using mongoose GeoJSON
         type: {
             type: String,
-            enum: ['Point'],
-            // required: true
+            enum: ['Point']
         },
         coordinates: {
             type: [Number],
-            // required: true,
             index: '2dsphere'
         },
         formattedAddress: String,
@@ -88,9 +86,29 @@ const CompanySchema = new mongoose.Schema({
     }
 });
 
-// Create company slug
+// Create company slug with slugify
 CompanySchema.pre('save', function(next) {
     this.slug = slugify(this.name, { lower: true });
+    next();
+});
+
+// Create company location with node-geocoder
+CompanySchema.pre('save', async function(next) {
+    const loc = await geocoder.geocode(this.address);
+    console.log(loc)
+    this.location = {
+        type: 'Point',
+        coordinates: [loc[0].longitude, loc[0].latitude],
+        formattedAddress: loc[0].formattedAddress,
+        street: loc[0].streetName,
+        city: loc[0].city,
+        state: loc[0].stateCode,
+        zipcode: loc[0].zipcode,
+        country: loc[0].countryCode
+    }
+
+    // Do not save address in DB
+    this.address = undefined;
     next();
 })
 

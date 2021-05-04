@@ -4,9 +4,10 @@ const morgan = require('morgan');
 const colors = require('colors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
-const companies = require('./routes/companies');
 
 dotenv.config({ path: './config/config.env' });
+
+const companies = require('./routes/companies');
 
 // Connect to mongodb
 connectDB();
