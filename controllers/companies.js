@@ -7,7 +7,9 @@ const Company = require('../models/Company');
 // @route   GET /api/v1/companies
 // @access  Public
 exports.getCompanies = asyncHandler(async (req, res, next) => {
-    const companies = await Company.find();
+    // Add $ to gt, gte, lt, lte, in
+    const query = JSON.stringify(req.query).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
+    const companies = await Company.find(JSON.parse(query));
     res.status(200).json({ success: true, results: companies.length, data: companies });
 });
 
