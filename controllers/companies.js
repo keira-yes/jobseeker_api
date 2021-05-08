@@ -7,9 +7,25 @@ const Company = require('../models/Company');
 // @route   GET /api/v1/companies
 // @access  Public
 exports.getCompanies = asyncHandler(async (req, res, next) => {
-    // Add $ to gt, gte, lt, lte, in
-    const query = JSON.stringify(req.query).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
-    const companies = await Company.find(JSON.parse(query));
+    const queryStr = { ...req.query };
+
+    // Remove params from query string
+    const removedParams = ['select'];
+    removedParams.map(item => delete queryStr[item]);
+
+    // Add $ to gt, gte, lt, lte, in for filtering
+    const filters = JSON.stringify(queryStr).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
+
+    // Find companies by filters
+    let companiesList = Company.find(JSON.parse(filters));
+
+    //Select fields to display
+    if (req.query.select) {
+        const selectedFields = req.query.select.split(',').join(' ');
+        companiesList = companiesList.select(selectedFields);
+    }
+
+    const companies = await companiesList;
     res.status(200).json({ success: true, results: companies.length, data: companies });
 });
 
