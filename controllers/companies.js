@@ -10,13 +10,13 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     const queryStr = { ...req.query };
 
     // Remove params from query string
-    const removedParams = ['select', 'sort'];
+    const removedParams = ['select', 'sort', 'page', 'limit'];
     removedParams.map(item => delete queryStr[item]);
 
     // Add $ to gt, gte, lt, lte, in for filtering
     const filters = JSON.stringify(queryStr).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
 
-    // Find companies by filters
+    // Find by filters
     let companiesList = Company.find(JSON.parse(filters));
 
     // Select fields to display
@@ -25,7 +25,7 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
         companiesList = companiesList.select(selectedFields);
     }
 
-    // Sort companies
+    // Sort
     if (req.query.sort) {
         const sortBy = req.query.sort.split(',').join(' ');
         companiesList = companiesList.sort(sortBy);
@@ -33,8 +33,31 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
         companiesList = companiesList.sort('-createdAt');
     }
 
+    // Page and limit
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = parseInt(req.query.limit, 10) || 9;
+    const prevItems = (page - 1) * limit;
+    const nextItems = page * limit;
+    const total = await Company.countDocuments();
+    companiesList = companiesList.skip(prevItems).limit(limit);
+
     const companies = await companiesList;
-    res.status(200).json({ success: true, results: companies.length, data: companies });
+
+    // Pagination
+    const pagination = {
+        page,
+        results: companies.length
+    };
+
+    if (nextItems < total) {
+        pagination.nextPage = page + 1;
+    }
+
+    if (prevItems > 0) {
+        pagination.prevPage = page - 1;
+    }
+
+    res.status(200).json({ success: true, total, pagination, data: companies });
 });
 
 // @desc    Get companies within a radius by zipcode and distance
