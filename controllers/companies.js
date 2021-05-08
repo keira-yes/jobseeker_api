@@ -10,7 +10,7 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     const queryStr = { ...req.query };
 
     // Remove params from query string
-    const removedParams = ['select'];
+    const removedParams = ['select', 'sort'];
     removedParams.map(item => delete queryStr[item]);
 
     // Add $ to gt, gte, lt, lte, in for filtering
@@ -19,10 +19,18 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     // Find companies by filters
     let companiesList = Company.find(JSON.parse(filters));
 
-    //Select fields to display
+    // Select fields to display
     if (req.query.select) {
         const selectedFields = req.query.select.split(',').join(' ');
         companiesList = companiesList.select(selectedFields);
+    }
+
+    // Sort companies
+    if (req.query.sort) {
+        const sortBy = req.query.sort.split(',').join(' ');
+        companiesList = companiesList.sort(sortBy);
+    } else {
+        companiesList = companiesList.sort('-createdAt');
     }
 
     const companies = await companiesList;
