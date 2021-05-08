@@ -1,0 +1,92 @@
+[
+	{
+		"_id": "5d725a4a7b292f5f8ceff789",
+		"title": "Middle PHP Developer",
+		"description": "The work is planned by weekly sprints. We have a super healthy and positive workflow. We always use the latest versions of plugins, software, approaches to work.",
+		"positionType": "Full-time",
+		"salary": 6000,
+		"level": "middle",
+		"company": "5d713995b721c3bb38c1f5d0",
+		"user": "5d7a514b5d2c12c7449be045"
+	},
+	{
+		"_id": "5d725c84c4ded7bcb480eaa0",
+		"title": "Senior React.js Developer",
+		"description": " Creating high-scale, highly-performant interactive visualizations (graphs, maps, charts), Transform large and complex datasets to beautiful visualizations, Optimize application for maximum speed and scalability, Collaborate with other team members and stakeholders, Build reusable code and libraries for future use",
+		"positionType": "Full-time, Remote",
+		"salary": 8000,
+		"level": "senior",
+		"bootcamp": "5d713995b721c3bb38c1f5d0",
+		"user": "5d7a514b5d2c12c7449be045"
+	},
+	{
+		"_id": "5d725cb9c4ded7bcb480eaa1",
+		"title": "Middle Full Stack JS Developer",
+		"description": "You will join the small-size team: 2 Full Stack Developers, QA, DevOps, CTO. This project is a PaaS platform for the world of sports betting. You will develop a client-side admin panel, that consists of such features as develop a high load and scalable system that shows data in live.",
+		"positionType": "Remote",
+		"salary": 4500,
+		"level": "middle",
+		"bootcamp": "5d713a66ec8f2b88b8f830b8",
+		"user": "5d7a514b5d2c12c7449be046"
+	},
+	{
+		"_id": "5d725cd2c4ded7bcb480eaa2",
+		"title": "Middle/Senior UI/UX Designer with HTML/CSS experience",
+		"description": "We are seeking a highly motivated and creative UX/UI Designer with HTML/CSS experience that is versatile and passionate about taking on new problems to push technology forward. Our client is a Germany-based tech startup. Their platform is the social professional network for consultants around the globe. It is the place to connect and meet with consultants and clients. The main idea is to gather the consultants and provide information about the right and relevant opportunities for your career. Learn from leading consultants about methodology, project success, industry experience — from peer to peer.",
+		"positionType": "Part-time",
+		"salary": 3600,
+		"level": "middle/senior",
+		"bootcamp": "5d713a66ec8f2b88b8f830b8",
+		"user": "5d7a514b5d2c12c7449be046"
+	},
+	{
+		"_id": "5d725ce8c4ded7bcb480eaa3",
+		"title": "Product Manager",
+		"description": "We are looking for a data-driven Product Manager who will be in charge of hypothesis testing and ARPU increasing on our premium dating product.",
+		"positionType": "Full-time",
+		"salary": 2000,
+		"level": "middle/senior",
+		"bootcamp": "5d725a037b292f5f8ceff787",
+		"user": "5c8a1d5b0190b214360dc031"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa4",
+		"title": "Junior PHP/JS Developer",
+		"description": "Если вы обладаете уверенными теоретическими знаниями и желаете профессионально развиваться, но не имеете боевого опыта работы — мы предлагаем Вам отличные условия для профессионального развития. Мы ищем Junior JavaScript/PHP разработчика, нацеленного на активное развитие и изучение современных технологии, который сможет дополнить нашу команду Full Stack разработки.",
+		"positionType": "Full-time/Part-time",
+		"salary": 500,
+		"level": "junior",
+		"bootcamp": "5d725a037b292f5f8ceff787",
+		"user": "5c8a1d5b0190b214360dc031"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa5",
+		"title": "IT Academy Education Coordinator",
+		"description": "The IT Academy Manager is responsible for shaping the future direction of IT Academy, its staff, and students. The IT Academy Manager must have a modern approach to development and be forward-thinking in their long-term strategy for the Academy. This role requires someone with experience with educational systems. Someone who possesses information about launching courses and interviewing candidates. We are looking for a person who will be responsible for creating and managing IT Academy.",
+		"positionType": "Full-time",
+		"salary": 1000,
+		"level": "junior",
+		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"user": "5c8a1d5b0190b214360dc032"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa6",
+		"title": "Senior QA Engineer",
+		"description": "The team is developing a system for hiring and maintaining medical staff. Our goal is to provide the best service to improve efficiency throughout the whole cycle of work: finding and hiring medical staff, checking documents, preparing for relocation, accompanying at all stages of the contract up to the completion and selection of new vacancies throughout North America. The company is now opening new business areas and expanding its IT team. We are looking for an experienced Manual QA (middle+/senior) who can quickly ramp up to existing processes.",
+		"positionType": "Full-time",
+		"salary": 3000,
+		"level": "senior",
+		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"user": "5c8a1d5b0190b214360dc032"
+	},
+	{
+		"_id": "5d725cfec4ded7bcb480eaa7",
+		"title": "Middle Full-Stack Developer (Python +JS)",
+		"description": "2 year commercial experience in full stack development using Python, 1 year commercial experience with JS/TS and some front end frameworks (Angular/React/Vue/etc)",
+		"positionType": "Remote",
+		"salary": 3800,
+		"level": "middle",
+		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"user": "5c8a1d5b0190b214360dc032"
+	}
+]
