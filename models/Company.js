@@ -15,7 +15,6 @@ const CompanySchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please add a company description'],
         unique: true,
-        trim: true,
         maxlength: [2000, 'No more than 2000 characters']
     },
     website: {

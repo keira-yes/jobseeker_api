@@ -16,7 +16,7 @@
 		"positionType": "Full-time, Remote",
 		"salary": 8000,
 		"level": "senior",
-		"bootcamp": "5d713995b721c3bb38c1f5d0",
+		"company": "5d713995b721c3bb38c1f5d0",
 		"user": "5d7a514b5d2c12c7449be045"
 	},
 	{
@@ -26,7 +26,7 @@
 		"positionType": "Remote",
 		"salary": 4500,
 		"level": "middle",
-		"bootcamp": "5d713a66ec8f2b88b8f830b8",
+		"company": "5d713a66ec8f2b88b8f830b8",
 		"user": "5d7a514b5d2c12c7449be046"
 	},
 	{
@@ -36,7 +36,7 @@
 		"positionType": "Part-time",
 		"salary": 3600,
 		"level": "middle/senior",
-		"bootcamp": "5d713a66ec8f2b88b8f830b8",
+		"company": "5d725a037b292f5f8ceff787",
 		"user": "5d7a514b5d2c12c7449be046"
 	},
 	{
@@ -46,7 +46,7 @@
 		"positionType": "Full-time",
 		"salary": 2000,
 		"level": "middle/senior",
-		"bootcamp": "5d725a037b292f5f8ceff787",
+		"company": "5d725a037b292f5f8ceff787",
 		"user": "5c8a1d5b0190b214360dc031"
 	},
 	{
@@ -56,7 +56,7 @@
 		"positionType": "Full-time/Part-time",
 		"salary": 500,
 		"level": "junior",
-		"bootcamp": "5d725a037b292f5f8ceff787",
+		"company": "5d725a1b7b292f5f8ceff788",
 		"user": "5c8a1d5b0190b214360dc031"
 	},
 	{
@@ -66,7 +66,7 @@
 		"positionType": "Full-time",
 		"salary": 1000,
 		"level": "junior",
-		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"company": "5d725a1b7b292f5f8ceff789",
 		"user": "5c8a1d5b0190b214360dc032"
 	},
 	{
@@ -76,7 +76,7 @@
 		"positionType": "Full-time",
 		"salary": 3000,
 		"level": "senior",
-		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"company": "5d713a66ec8f2b88b8f830b9",
 		"user": "5c8a1d5b0190b214360dc032"
 	},
 	{
@@ -86,7 +86,7 @@
 		"positionType": "Remote",
 		"salary": 3800,
 		"level": "middle",
-		"bootcamp": "5d725a1b7b292f5f8ceff788",
+		"company": "5d713a66ec8f2b88b8f830b6",
 		"user": "5c8a1d5b0190b214360dc032"
 	}
 ]
