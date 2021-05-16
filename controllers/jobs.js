@@ -52,10 +52,27 @@ exports.createJob = asyncHandler(async(req, res, next) => {
     const company = await Company.findById(req.params.companyId);
 
     if (!company) {
-        return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
+        return next(new ErrorResponse(`Company with id ${req.params.companyId} not found`, 404));
     }
 
     const job = await Job.create(req.body);
 
     res.status(201).json({ success: true, data: job });
+});
+
+// @desc    Update new job
+// @route   PUT /api/v1/jobs/:id
+// @access  Private
+
+exports.updateJob = asyncHandler(async(req, res, next) => {
+    const job = await Job.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+    if (!job) {
+        return next(new ErrorResponse(`Job with id ${req.params.id} not found`, 404));
+    }
+
+    res.status(200).json({ success: true, data: job });
 });

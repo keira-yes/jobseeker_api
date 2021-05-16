@@ -3,7 +3,8 @@ const router = express.Router({ mergeParams: true });
 const {
     getJobs,
     getJob,
-    createJob
+    createJob,
+    updateJob
 } = require('../controllers/jobs');
 
 router
@@ -13,6 +14,7 @@ router
 
 router
     .route('/:id')
-    .get(getJob);
+    .get(getJob)
+    .put(updateJob);
 
 module.exports = router;

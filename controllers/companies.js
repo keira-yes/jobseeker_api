@@ -116,10 +116,7 @@ exports.updateCompany = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
     }
 
-    res.status(200).json({
-        success: true,
-        data: company
-    });
+    res.status(200).json({ success: true, data: company });
 });
 
 // @desc    Delete company
