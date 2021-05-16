@@ -60,7 +60,7 @@ exports.createJob = asyncHandler(async(req, res, next) => {
     res.status(201).json({ success: true, data: job });
 });
 
-// @desc    Update new job
+// @desc    Update job
 // @route   PUT /api/v1/jobs/:id
 // @access  Private
 
@@ -75,4 +75,20 @@ exports.updateJob = asyncHandler(async(req, res, next) => {
     }
 
     res.status(200).json({ success: true, data: job });
+});
+
+// @desc    Delete job
+// @route   DELETE /api/v1/jobs/:id
+// @access  Private
+
+exports.deleteJob = asyncHandler(async(req, res, next) => {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+        return next(new ErrorResponse(`Job with id ${req.params.id} not found`, 404));
+    }
+
+    await job.remove();
+
+    res.status(200).json({ success: true, data: {} });
 });

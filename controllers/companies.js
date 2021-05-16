@@ -129,10 +129,7 @@ exports.deleteCompany = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
     }
 
-    company.remove();
+    await company.remove();
 
-    res.status(200).json({
-        success: true,
-        data: {}
-    });
+    res.status(200).json({ success: true, data: {} });
 });
