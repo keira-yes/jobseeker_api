@@ -136,11 +136,13 @@ exports.updateCompany = asyncHandler(async (req, res, next) => {
 // @route   DELETE /api/v1/companies/:id
 // @access  Private
 exports.deleteCompany = asyncHandler(async (req, res, next) => {
-    const company = await Company.findByIdAndDelete(req.params.id);
+    const company = await Company.findById(req.params.id);
 
     if (!company) {
         return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
     }
+
+    company.remove();
 
     res.status(200).json({
         success: true,

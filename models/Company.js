@@ -114,6 +114,12 @@ CompanySchema.pre('save', async function(next) {
     next();
 });
 
+// Delete jobs of a deleted company
+CompanySchema.pre('remove', async function(next) {
+    await this.model('Job').deleteMany({ company: this._id });
+    next();
+});
+
 // Add virtuals to show jobs in companies response (reverse populate)
 CompanySchema.virtual('jobs', {
     ref: 'Job',
