@@ -61,7 +61,7 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
 });
 
 // @desc    Get companies within a radius by zipcode and distance
-// @route   DELETE /api/v1/companies/radius/:zipcode/:distance
+// @route   GET /api/v1/companies/radius/:zipcode/:distance
 // @access  Public
 exports.getCompaniesWithinRadius = asyncHandler(async (req, res, next) => {
     const { zipcode, distance } = req.params;
@@ -79,14 +79,10 @@ exports.getCompaniesWithinRadius = asyncHandler(async (req, res, next) => {
         location: { $geoWithin: { $centerSphere: [ [lng, lat], radius ] } }
     });
 
-    res.status(200).json({
-        success: true,
-        results: companies.length,
-        data: companies
-    });
+    res.status(200).json({ success: true, total: companies.length, data: companies });
 });
 
-// @desc    Get company by id
+// @desc    Get single company
 // @route   GET /api/v1/companies/:id
 // @access  Public
 exports.getCompany = asyncHandler(async (req, res, next) => {
@@ -96,10 +92,7 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
         return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
     }
 
-    res.status(200).json({
-        success: true,
-        data: company
-    });
+    res.status(200).json({ success: true, data: company });
 });
 
 // @desc    Create new company

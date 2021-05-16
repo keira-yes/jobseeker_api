@@ -22,4 +22,21 @@ exports.getJobs = asyncHandler(async(req, res, next) => {
     const jobs = await jobsList;
 
     res.status(200).json({ success: true, total: jobs.length, data: jobs });
-})
+});
+
+// @desc    Get single job
+// @route   GET /api/v1/jobs/:id
+// @access  Public
+
+exports.getJob = asyncHandler(async(req, res, next) => {
+   const job = await Job.findById(req.params.id).populate({
+       path: 'company',
+       select: 'name website'
+   });
+
+    if (!job) {
+        return next(new ErrorResponse(`Job with id ${req.params.id} not found`, 404));
+    }
+
+    res.status(200).json({ success: true, data: job });
+});
