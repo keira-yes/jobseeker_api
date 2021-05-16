@@ -13,7 +13,10 @@ exports.getJobs = asyncHandler(async(req, res, next) => {
     if (req.params.companyId) {
         jobsList = Job.find({ company: req.params.companyId });
     } else {
-        jobsList = Job.find();
+        jobsList = Job.find().populate({
+            path: 'company',
+            select: 'name website'
+        });
     }
 
     const jobs = await jobsList;
