@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const {
     getJobs,
-    getJob
+    getJob,
+    createJob
 } = require('../controllers/jobs');
 
 router
     .route('/')
-    .get(getJobs);
+    .get(getJobs)
+    .post(createJob);
 
 router
     .route('/:id')

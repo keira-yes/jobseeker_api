@@ -100,10 +100,7 @@ exports.getCompany = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.createCompany = asyncHandler(async (req, res, next) => {
     const company = await Company.create(req.body);
-    res.status(201).json({
-        success: true,
-        data: company
-    });
+    res.status(201).json({ success: true, data: company });
 });
 
 // @desc    Update company

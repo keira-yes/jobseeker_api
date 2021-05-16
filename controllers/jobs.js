@@ -1,5 +1,6 @@
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
+const Company = require('../models/Company');
 const Job = require('../models/Job');
 
 // @desc    Get all jobs
@@ -39,4 +40,22 @@ exports.getJob = asyncHandler(async(req, res, next) => {
     }
 
     res.status(200).json({ success: true, data: job });
+});
+
+// @desc    Create new job
+// @route   POST /api/v1/companies/companyId/jobs
+// @access  Private
+
+exports.createJob = asyncHandler(async(req, res, next) => {
+    req.body.company = req.params.companyId;
+
+    const company = await Company.findById(req.params.companyId);
+
+    if (!company) {
+        return next(new ErrorResponse(`Company with id ${req.params.id} not found`, 404));
+    }
+
+    const job = await Job.create(req.body);
+
+    res.status(201).json({ success: true, data: job });
 });
