@@ -8,6 +8,7 @@ const connectDB = require('./config/db');
 dotenv.config({ path: './config/config.env' });
 
 const companies = require('./routes/companies');
+const jobs = require('./routes/jobs');
 
 // Connect to mongodb
 connectDB();
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Routes
 app.use('/api/v1/companies', companies);
+app.use('/api/v1/jobs', jobs);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

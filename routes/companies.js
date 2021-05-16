@@ -9,6 +9,11 @@ const {
     deleteCompany
 } = require('../controllers/companies');
 
+// Other resources routes
+const jobsRouter = require('./jobs');
+
+router.use('/:companyId/jobs', jobsRouter);
+
 router
     .route('/radius/:zipcode/:distance')
     .get(getCompaniesWithinRadius);
