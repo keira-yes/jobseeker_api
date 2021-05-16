@@ -17,7 +17,7 @@ exports.getCompanies = asyncHandler(async (req, res, next) => {
     const filters = JSON.stringify(queryStr).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
 
     // Find by filters
-    let companiesList = Company.find(JSON.parse(filters));
+    let companiesList = Company.find(JSON.parse(filters)).populate('jobs');
 
     // Select fields to display
     if (req.query.select) {

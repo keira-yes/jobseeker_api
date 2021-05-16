@@ -84,6 +84,9 @@ const CompanySchema = new mongoose.Schema({
        type: Date,
         default: Date.now
     }
+}, {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 });
 
 // Create company slug with slugify
@@ -109,6 +112,14 @@ CompanySchema.pre('save', async function(next) {
     // Do not save address in DB
     this.address = undefined;
     next();
-})
+});
+
+// Add virtuals to show jobs in companies response (reverse populate)
+CompanySchema.virtual('jobs', {
+    ref: 'Job',
+    localField: '_id',
+    foreignField: 'company',
+    justOne: false
+});
 
 module.exports = mongoose.model('Company', CompanySchema);
