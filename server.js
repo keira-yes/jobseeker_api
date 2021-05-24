@@ -37,4 +37,4 @@ const server = app.listen(PORT, () => console.log(`Server is running on ${PORT} 
 process.on('unhandledRejection', (err, promise) => {
     console.log(`Error: ${err.message}`.brightRed);
     server.close(() => process.exit(1));
-})
+});

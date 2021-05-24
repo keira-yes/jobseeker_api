@@ -12,8 +12,7 @@
 		"housing": true,
 		"jobAssistance": true,
 		"jobGuarantee": false,
-		"acceptGi": true,
-		"averageSalary": 5000
+		"acceptGi": true
 	},
 	{
 		"_id": "5d713a66ec8f2b88b8f830b8",
@@ -28,8 +27,7 @@
 		"housing": false,
 		"jobAssistance": true,
 		"jobGuarantee": false,
-		"acceptGi": true,
-		"averageSalary": 1000
+		"acceptGi": true
 	},
 	{
 		"_id": "5d725a037b292f5f8ceff787",
@@ -44,8 +42,7 @@
 		"housing": false,
 		"jobAssistance": false,
 		"jobGuarantee": false,
-		"acceptGi": false,
-		"averageSalary": 3500
+		"acceptGi": false
 	},
 	{
 		"_id": "5d725a1b7b292f5f8ceff788",
@@ -60,8 +57,7 @@
 		"housing": false,
 		"jobAssistance": true,
 		"jobGuarantee": true,
-		"acceptGi": true,
-		"averageSalary": 2000
+		"acceptGi": true
 	},
 	{
 		"_id": "5d725a1b7b292f5f8ceff789",
@@ -76,8 +72,7 @@
 		"housing": false,
 		"jobAssistance": true,
 		"jobGuarantee": true,
-		"acceptGi": true,
-		"averageSalary": 7000
+		"acceptGi": true
 	},
 	{
 		"_id": "5d713a66ec8f2b88b8f830b9",
@@ -92,8 +87,7 @@
 		"housing": false,
 		"jobAssistance": true,
 		"jobGuarantee": false,
-		"acceptGi": true,
-		"averageSalary": 4600
+		"acceptGi": true
 	},
 	{
 		"_id": "5d713a66ec8f2b88b8f830b6",
@@ -108,7 +102,6 @@
 		"housing": false,
 		"jobAssistance": true,
 		"jobGuarantee": false,
-		"acceptGi": true,
-		"averageSalary": 4600
+		"acceptGi": true
 	}
 ]
