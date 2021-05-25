@@ -6,7 +6,8 @@ const {
     getCompany,
     createCompany,
     updateCompany,
-    deleteCompany
+    deleteCompany,
+    uploadCompanyPhoto
 } = require('../controllers/companies');
 
 // Other resources routes
@@ -15,8 +16,7 @@ const jobsRouter = require('./jobs');
 router.use('/:companyId/jobs', jobsRouter);
 
 router
-    .route('/radius/:zipcode/:distance')
-    .get(getCompaniesWithinRadius);
+    .route('/radius/:zipcode/:distance').get(getCompaniesWithinRadius);
 
 router
     .route('/')
@@ -27,6 +27,8 @@ router
     .route('/:id')
     .get(getCompany)
     .put(updateCompany)
-    .delete(deleteCompany)
+    .delete(deleteCompany);
+
+router.route('/:id/upload').put(uploadCompanyPhoto);
 
 module.exports = router;
