@@ -9,20 +9,12 @@ const Job = require('../models/Job');
 // @access  Public
 
 exports.getJobs = asyncHandler(async(req, res, next) => {
-    let jobsList;
-
     if (req.params.companyId) {
-        jobsList = Job.find({ company: req.params.companyId });
+        const jobs = await Job.find({ company: req.params.companyId });
+        res.status(200).json({ success: true, total: jobs.length, data: jobs });
     } else {
-        jobsList = Job.find().populate({
-            path: 'company',
-            select: 'name website'
-        });
+        res.status(200).json(res.extendedResults);
     }
-
-    const jobs = await jobsList;
-
-    res.status(200).json({ success: true, total: jobs.length, data: jobs });
 });
 
 // @desc    Get single job

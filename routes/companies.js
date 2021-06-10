@@ -9,6 +9,8 @@ const {
     deleteCompany,
     uploadCompanyPhoto
 } = require('../controllers/companies');
+const Company = require('../models/Company');
+const extendedResults = require('../middleware/extendedResults');
 
 // Other resources routes
 const jobsRouter = require('./jobs');
@@ -20,7 +22,7 @@ router
 
 router
     .route('/')
-    .get(getCompanies)
+    .get(extendedResults(Company, 'jobs'), getCompanies)
     .post(createCompany);
 
 router

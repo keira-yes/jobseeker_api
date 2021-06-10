@@ -7,10 +7,15 @@ const {
     updateJob,
     deleteJob
 } = require('../controllers/jobs');
+const Job = require('../models/Job');
+const extendedResults = require('../middleware/extendedResults');
 
 router
     .route('/')
-    .get(getJobs)
+    .get(extendedResults(Job, {
+        path: 'company',
+        select: 'name website'
+    }), getJobs)
     .post(createJob);
 
 router

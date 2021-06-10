@@ -8,57 +8,7 @@ const Company = require('../models/Company');
 // @route   GET /api/v1/companies
 // @access  Public
 exports.getCompanies = asyncHandler(async (req, res, next) => {
-    const queryStr = { ...req.query };
-
-    // Remove params from query string
-    const removedParams = ['select', 'sort', 'page', 'limit'];
-    removedParams.map(item => delete queryStr[item]);
-
-    // Add $ to gt, gte, lt, lte, in for filtering
-    const filters = JSON.stringify(queryStr).replace(/\b(gt|gte|lt|lte|in)\b/, str => `$${str}`);
-
-    // Find by filters
-    let companiesList = Company.find(JSON.parse(filters)).populate('jobs');
-
-    // Select fields to display
-    if (req.query.select) {
-        const selectedFields = req.query.select.split(',').join(' ');
-        companiesList = companiesList.select(selectedFields);
-    }
-
-    // Sort
-    if (req.query.sort) {
-        const sortBy = req.query.sort.split(',').join(' ');
-        companiesList = companiesList.sort(sortBy);
-    } else {
-        companiesList = companiesList.sort('-createdAt');
-    }
-
-    // Page and limit
-    const page = parseInt(req.query.page, 10) || 1;
-    const limit = parseInt(req.query.limit, 10) || 9;
-    const prevItems = (page - 1) * limit;
-    const nextItems = page * limit;
-    const total = await Company.countDocuments();
-    companiesList = companiesList.skip(prevItems).limit(limit);
-
-    const companies = await companiesList;
-
-    // Pagination
-    const pagination = {
-        page,
-        results: companies.length
-    };
-
-    if (nextItems < total) {
-        pagination.nextPage = page + 1;
-    }
-
-    if (prevItems > 0) {
-        pagination.prevPage = page - 1;
-    }
-
-    res.status(200).json({ success: true, total, pagination, data: companies });
+    res.status(200).json(res.extendedResults);
 });
 
 // @desc    Get companies within a radius by zipcode and distance
